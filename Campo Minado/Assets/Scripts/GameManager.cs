@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    // Delegates de eventos
+    
     public delegate void GameOverDelegate();
     public delegate void VictoryDelegate();
 
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         managerUI.AtualizarTexto(false);
 
-        OnGameOver?.Invoke(); // Invoca o evento Game Over
+        OnGameOver?.Invoke();
     }
 
     public void ChecarVitoria()
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
             gameOver.SetActive(true);
             managerUI.AtualizarTexto(true);
 
-            OnVictory?.Invoke(); // Invoca o evento Vitória
+            OnVictory?.Invoke();
         }
     }
 }

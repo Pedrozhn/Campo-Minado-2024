@@ -9,12 +9,14 @@ public class Area : MonoBehaviour
 
     int indexI, indexJ;
 
-
-
     [SerializeField] Sprite[] spritesVazios;
     [SerializeField] Sprite bombaSprite, bandeiraSprite, spriteOriginal;
 
     public bool Bomba { get => bomba; set => bomba = value; }
+
+    
+    public delegate void AreaClickedDelegate(int i, int j);
+    public event AreaClickedDelegate OnAreaClicked;
 
     private void Start()
     {
@@ -29,6 +31,8 @@ public class Area : MonoBehaviour
 
     public void Clicado()
     {
+        OnAreaClicked?.Invoke(indexI, indexJ);  
+
         if (GameManager.instance.ModoBandeira)
         {
             TransformarBandeira();
@@ -76,3 +80,4 @@ public class Area : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = bombaSprite;
     }
 }
+
